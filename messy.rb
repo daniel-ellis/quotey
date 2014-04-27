@@ -81,7 +81,7 @@ end
 
 # Load the file when the server starts
 configure do
-  set :port, 9494
+  set :port, ENV['PORT']
   load_file
 end
 
