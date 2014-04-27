@@ -76,7 +76,7 @@ delete '/' do
 end
 
 get '/*' do
-  [404, 'We couldn't find that, sorry!']
+  [404, 'We couldn\'t find that, sorry!']
 end
 
 # Load the file when the server starts
