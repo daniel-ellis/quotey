@@ -1,1 +1,1 @@
-web: bundle exec ruby messy.rb -p $PORT
+web: bundle exec ruby quotey.rb -p $PORT
