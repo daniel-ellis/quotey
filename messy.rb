@@ -2,7 +2,7 @@
 
 require 'sinatra'
 require 'json'
-require_relative 'shitty'
+require_relative 'crappy'
 
 include Shitty
 
@@ -52,5 +52,6 @@ end
 # Load the file when the server starts
 configure do
   set :port, ENV['PORT']
+  Mongoid.load!("mongoid.yml")
 end
 

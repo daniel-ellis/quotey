@@ -1,7 +1,3 @@
-development:
-  host: localhost
-  database: godfather_development
-
 # set according to heroku
 production:
   uri: <%= ENV['MONGOHQ_URL'] %>
