@@ -21,11 +21,6 @@ get '/all.json' do
   output_json all
 end
 
-get '/test' do
-  e = get_quote '5364b6541baf6a32a9000001'
-  "#{e['quote']} + #{e['_id']}"
-end
-
 post '/' do
   if params_contain?(params, %w(author quote))
     add_quote(params['quote'], params['author'])
@@ -36,6 +31,10 @@ post '/' do
 end
 
 delete '/' do
+  del_auth_tokens = %w(j6scdn7d4d 3fylyafiah nbt4x7qus1)
+  unless del_auth_tokens.include? params['auth'] 
+    return [403, 'Invalid token. Please sent a valid auth param']
+  end
   id_to_del = params['id']
   if id_to_del && !!(get_quote(id_to_del))
     del_quote(id_to_del)
