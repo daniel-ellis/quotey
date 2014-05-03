@@ -1,10 +1,10 @@
-# Messy code tips
+# Quote API
 
 require 'sinatra'
 require 'json'
-require_relative 'crappy'
+require_relative 'quotey_helper'
 
-include Shitty
+include Quotey_helper
 
 get '/random.json' do
   output_json clean_json random_quote
@@ -48,7 +48,7 @@ get '/*' do
   [404, 'We couldn\'t find that, sorry!']
 end
 
-# Load the file when the server starts
+# Server config
 configure do
   set :port, ENV['PORT']
   Mongoid.load!("mongoid.yml")

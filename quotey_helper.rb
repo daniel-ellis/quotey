@@ -1,14 +1,12 @@
-module Shitty
+module Quotey_helper
   
   require_relative 'mongo'
   
   def random_quote
-    # TODO - return a random quote
     Quote.all_in.to_a.sample
   end
   
   def all_quotes
-    # TODO - return all of the quotes
     Quote.all_in
   end
   
