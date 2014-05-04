@@ -3,7 +3,20 @@ module Quotey_helper
   require_relative 'mongo'
   
   def random_quote
-    Quote.all_in.to_a.sample
+    if params['not_by']
+      random_quote_not_by params['not_by']
+    else
+      Quote.all_in.to_a.sample      
+    end
+  end
+  
+  def random_quote_not_by name
+    name_split = name.split(' ')
+    if name_split[1]
+      return Quote.excludes(author_first: name_split[0], author_last: name_split[1]).to_a.sample
+    else
+      return Quote.excludes(author_first: name_split[0], author_last: name_split[1]).to_a.sample      
+    end
   end
   
   def all_quotes
