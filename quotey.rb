@@ -17,7 +17,14 @@ end
 
 get '/all.json' do
   all = []
-  all_quotes.each {|quote| all.push clean_json quote }
+  if params['meta'] == 'true'
+    all_quotes.each do |quote| 
+      a = {'id' => quote['_id']} 
+      all.push a
+    end
+  else
+    all_quotes.each {|quote| all.push clean_json quote }
+  end
   output_json all
 end
 
